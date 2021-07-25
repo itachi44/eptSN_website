@@ -239,8 +239,10 @@ signInform.addEventListener("submit",function(e){
   if (verifName(prenom)==true && verifName(nom)==true && verifName(lieuNaissance)==true &&
               verifCaptcha(captchaCode)==true  && verifEmail(email)==true && verifPassword(pwd1)==true && comparePasswords(pwd1,pwd2)==true  ){
               console.log("tout est correct!");
-              signInform.submit()
-              document.getElementById("textOver").style.display="block";
+              if (document.getElementById('id_policy').checked) {
+                signInform.submit()
+                document.getElementById("textOver").style.display="block";
+            }
 
   }  
   else{
@@ -267,7 +269,22 @@ pwd1.addEventListener("focus",function(e){
     //vérifier le mot de passe
     verifPassword(pwd1);
     
-   })
+   });
+
+
+
+   //déconnecter l'utilisateur à la fermeture du navigateur
+window.addEventListener('beforeunload', function (e) {
+
+  /*
+  $.ajax({
+    url: logout_url,
+    method: 'GET',
+})
+*/
+});
+
+
 
 
     </script>

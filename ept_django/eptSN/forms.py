@@ -66,7 +66,7 @@ class SignInForm(forms.Form):
     #policy
     policy = forms.BooleanField(
         label="",
-        required=False
+        required=True
     )
 
     #champ date de naissance (select list)
