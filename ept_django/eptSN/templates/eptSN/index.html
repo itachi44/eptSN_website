@@ -1,0 +1,108 @@
+{% extends 'eptSN/base.html' %}
+{% load i18n %}
+
+
+
+{% block content %}
+{% if request.session.username  %}
+<style>
+  #logIn, #SignIn{
+    display: none;
+  }
+  .LogOut{
+    display: block;
+  }
+  .LogOut:focus{
+    outline: none;
+    box-shadow: none;
+  }
+  .LogOut:active{
+    transform: scale(0.9);
+    outline: none;
+    box-shadow: none;
+}
+.LogOut:hover{
+  transform: scale(1.1);
+}
+.LogOut{
+  transition: all 0.3s ease-out;
+
+}
+.LogOut{
+  border: 2px solid #e19132;
+  color: #e19132;
+  border-radius: 12px;
+  margin-left: 8%;
+}
+
+
+</style>
+{{ request.session.username }}
+{% else %}
+
+<style>
+  .LogOut{
+    display: none;
+  }
+</style>
+
+<div style=" width:100%; padding:0;" class="col-lg-12 text-center">
+  <div style=" width:100%" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div id="textOver" class="textOverlay" class="card bg-dark text-white">
+          <h1 style="text-align: left;"> {% trans "Sagesse - Devoir"%}</h1> 
+          <p id="textOverlay" style="text-align:justify;">
+        {% trans "L'Ecole Polytechnique de Thiès, connu sous le sigle EPT, est une"%}  <br>
+        {% trans "grande école d'ingénieurs implantée au Sénégal. créée en 1973"%}  <br>
+        {% trans "par Léopold Sédar Senghor, elle forme des ingénieurs dans les"%}   <br>
+        {% trans "domaines du civil, du génie électromécanique (avec une "%} <br>
+        {% trans "filière aéronautique) et du génie informatique et"%}   <br> {% trans "télécommunications."%}  
+          </p>
+        </div>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          {% load static %}
+
+          <img src="{% static 'eptSN/img/ept_background.png'%}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+
+          <img src="{% static 'eptSN/img/ept10.png'%}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+
+          <img src="{% static 'eptSN/img/ept5.png'%}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+
+          <img src="{% static 'eptSN/img/ept9.png'%}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">précedent</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">suivant</span>
+      </button>
+    </div>
+  
+</div>
+
+
+{% endif %}
+
+{% endblock %}
+
+
+

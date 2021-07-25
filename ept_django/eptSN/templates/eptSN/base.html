@@ -1,0 +1,283 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>EPT_SN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'eptSN/css/style.css'%}"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'eptSN/img/favicon-32x32.png'%}"
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    {% block header %}
+    {% include 'eptSN/header.html'%}
+    {% endblock %}
+
+    <div id="result" class="row">
+      
+    </div>
+
+    <div id="message">
+      <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{message}}</div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+     {% block content1 %}
+       
+     {% endblock content1 %}
+
+    <div style="margin: 0; width:100%;" class="container-fluid">
+      <div class="row">
+
+          {% block content %}
+  
+          {% endblock %}
+      </div>
+    </div>
+
+
+
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'eptSN/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'eptSN/js/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'eptSN/js/script.js' %}"></script>
+
+    <script>
+
+      //le message flottant pour 3s
+      $("#message").show().delay(3000).fadeOut();
+
+
+
+
+        function captcha(){
+          let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
+                       ,'W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i',
+                       'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z', '!','@','#','$','%','^','&','*','+'];
+                       let a = alpha[Math.floor(Math.random()*71)];
+                       let b = alpha[Math.floor(Math.random()*71)];
+                       let c = alpha[Math.floor(Math.random()*71)];
+                       let d = alpha[Math.floor(Math.random()*71)];
+                       let e = alpha[Math.floor(Math.random()*71)];
+                       let f = alpha[Math.floor(Math.random()*71)];
+        
+                       let final = a+b+c+d+e+f;
+                       document.getElementById("id_captcha").value=final;
+                     }
+                     //on initialise un captcha
+                     captcha();
+                     //gestionnaire d'évènement sur le bouton reload captcha
+        
+                     document.getElementById("reloadCaptcha").addEventListener("click",function(e){
+                       captcha();
+        
+                     });
+
+
+
+
+//###############################################################################################################################//
+
+
+
+        
+    //gestionnaire d'évènement pour l'envoie du formulaire et la verification du captcha
+
+    //###=>controllers
+    function surligne(field, error) {
+      if (error) {
+        field.style.backgroundColor = "#fba";
+      }
+      else { 
+        field.style.backgroundColor = "";
+      }
+    }
+        
+    let regexName = /^[a-zA-Zç .-]{0,}$/;
+    let regexEmail=/^[a-zA-Z0-9.]{1,}@[ept]{3,3}\.[sn]{2,2}$/;
+    //le mot de passe doit commencer par une lettre majuscule, comporter au moins 1 chiffre et au moins un caractère spécial
+    let regexPwd=/^^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]*)(?!.*\s).{8,15}$/;
+
+    //vérifie les champs nom, prenom et lieu de naissance
+    function verifName(field) {
+      if (!regexName.test(field.value) || field.value.length < 2 || field.value.length > 25 || field.value == "") {
+        surligne(field, true);
+        return false;
+      }
+      else {
+        surligne(field, false);
+        return true;
+    
+      }
+    }
+
+    //vérifie le mot de passe1 saisie
+    function verifPassword(field) {
+      if (!regexPwd.test(field.value) || field.value.length < 8 || field.value.length > 20 || field.value == "") {
+        surligne(field, true);
+        return false;
+      }
+      else {
+        surligne(field, false);
+        return true;
+    
+      }
+    }
+
+
+    //vérifie l'adresse email
+    function verifEmail(field) {
+      if (!regexEmail.test(field.value)) {
+        surligne(field, true);
+        return false;
+      }
+      else {
+        surligne(field, false);
+        return true;
+    
+      }
+    }
+    //vérifie les deux mots de passes
+    function comparePassword(field1,field2) {
+      if (field1.value==field2.value) {
+        return true;
+      }
+      else {
+        surligne(field2, true);
+        return false;
+    
+      }
+    }
+
+    //vérifie si le captcha est valide ou pas
+    function verifCaptcha(field){
+      let captcha1 = document.getElementById('id_captcha').value;
+
+      let captcha2 = document.getElementById('id_captchaCode').value;
+      if(captcha1===captcha2){
+        console.log("capcha valid");
+        return true;
+      }else{
+        console.log("captcha invalid");
+        surligne(field, true);
+        captcha();
+        return false;
+      }
+     }
+
+    //###=>récupération des noeuds 
+    let nom= document.getElementById("id_nom");
+    let prenom= document.getElementById("id_prenom");
+    let email= document.getElementById("id_email");
+    let pwd1= document.getElementById("id_signInPassword");
+    let pwd2= document.getElementById("id_passwordConfirm");
+    let lieuNaissance= document.getElementById("id_lieuNaissance");
+    let captchaCode= document.getElementById("id_captchaCode");
+    let signInform=document.getElementById("registeringForm");
+
+
+
+
+    //###=>enlever le surlignement si on est entrain de modifier les champs
+    nom.addEventListener("focus",(e) => {
+      surligne(nom, false);
+    })
+    prenom.addEventListener("focus",(e) => {
+      surligne(prenom, false);
+    })
+    email.addEventListener("focus",(e) => {
+      surligne(email, false);
+    })
+    lieuNaissance.addEventListener("focus",(e) => {
+      surligne(lieuNaissance, false);
+    })
+    captchaCode.addEventListener("focus",(e) => {
+      surligne(captchaCode, false);
+    })
+    pwd1.addEventListener("focus",(e) => {
+      surligne(pwd1, false);
+    })
+    pwd2.addEventListener("focus",(e) => {
+      surligne(pwd2, false);
+    })
+    
+    window.addEventListener("keypress",(e) => {
+      surligne(prenom, false);
+      surligne(nom, false);
+      surligne(email, false);
+      surligne(lieuNaissance, false);
+      surligne(captchaCode, false);
+    })
+    
+   
+//events handler
+signInform.addEventListener("submit",function(e){
+  if (verifName(prenom)==true && verifName(nom)==true && verifName(lieuNaissance)==true &&
+              verifCaptcha(captchaCode)==true  && verifEmail(email)==true && verifPassword(pwd1)==true && comparePasswords(pwd1,pwd2)==true  ){
+              console.log("tout est correct!");
+              signInform.submit()
+              document.getElementById("textOver").style.display="block";
+
+  }  
+  else{
+    e.preventDefault(); 
+  }
+
+})
+
+
+//écoute de l'évènement change sur le champ du mot de passe
+
+pwd1.addEventListener("focus",function(e){  
+   //afficher les message dans l'élément d'id= formMessage
+   let msgElt=document.getElementById("formMessage");
+   let message="le mot de passe doit commencer par une lettre majuscule, comporter au moins un chiffre et au moins un caractère spécial!";
+   msgElt.textContent=message;
+   msgElt.style.display="block";
+  })
+
+  pwd1.addEventListener("focusout",function(e){    
+    let msgElt=document.getElementById("formMessage");
+    msgElt.style.display="none";
+
+    //vérifier le mot de passe
+    verifPassword(pwd1);
+    
+   })
+
+
+    </script>
+
+
+
+
+    {% block footer %}
+    {% include 'eptSN/footer.html'%}
+    {% endblock %}
+
+  </body>
+</html>

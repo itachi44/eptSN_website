@@ -1,0 +1,149 @@
+{% extends 'eptSN/base.html' %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+{% if request.session.username  %}
+<style>
+  #logIn, #SignIn{
+    display: none;
+  }
+  .LogOut{
+    display: block;
+  }
+  .LogOut:focus{
+    outline: none;
+    box-shadow: none;
+  }
+  .LogOut:active{
+    transform: scale(0.9);
+    outline: none;
+    box-shadow: none;
+}
+.LogOut:hover{
+  transform: scale(1.1);
+}
+.LogOut{
+  transition: all 0.3s ease-out;
+
+}
+.LogOut{
+  border: 2px solid #e19132;
+  color: #e19132;
+  border-radius: 12px;
+  margin-left: 8%;
+}
+
+
+</style>
+
+
+{% include 'eptSN/contact.html'%}
+
+
+{% else %}
+
+<style>
+  .LogOut{
+    display: none;
+  }
+</style>
+
+{% include 'eptSN/contact.html'%}
+
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--definition du script pour l'API FETCH-->
+<script>
+
+
+
+    function surligne(field, error) {
+        if (error) {
+            field.style.backgroundColor = "#fba";
+        }
+        else { 
+            field.style.backgroundColor = "";
+        }
+    }
+
+
+    function checkField(field) {
+        if (field.value == "") {
+            surligne(field, true);
+            return false;
+        }
+        else {
+            surligne(field, false);
+            return true;
+    
+        }
+    }
+    
+    let adresse=document.getElementById("id_adresse");
+    let bp=document.getElementById("id_bp");
+
+    adresse.addEventListener("change",(e) => {
+        surligne(adresse, false);
+    })
+    
+    bp.addEventListener("change",(e) => {
+        surligne(bp, false);
+    })
+
+
+
+
+
+    /*gestionnaire d'évènements*/
+    document.querySelector("#submit").addEventListener("click", event => {
+        if (checkField(adresse)==false || checkField(bp)==false){
+            event.preventDefault();
+        }
+        event.preventDefault();
+
+        let formData = new FormData();
+        formData.append('adresse', document.querySelector("#id_adresse").value);
+        formData.append('bp', document.querySelector("#id_bp").value);
+
+
+// On récupère la valeur du jeton CSRF
+let csrfTokenValue = document.querySelector('[name=csrfmiddlewaretoken]').value;
+const request = new Request("{% url 'eptSN:ajax' %}", {
+    method: 'POST',
+    body: formData,
+    headers: {
+    'X-CSRFToken': csrfTokenValue
+}  // On ajoute le token dans l'en-tête
+});
+
+// On exécute la requête
+fetch(request)
+    .then(response => response.json())
+    //result est la réponse de la reqête HTTP 
+    .then(result => {
+        //on construit la réponse en manipulant le DOM avec du js
+        const resultContent = document.querySelector("#Ajaxresult");
+        resultContent.innerHTML=result["result"];
+        const data=result["result"];
+    })
+})
+   
+</script>
+

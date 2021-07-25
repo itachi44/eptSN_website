@@ -1,0 +1,89 @@
+{% load i18n %}
+
+{% if page %}
+    <style>
+        #contact{
+            color: #e19132;
+            }
+    </style>
+{% endif %}
+<hr>
+<div class="lisiere col-12">
+    {% trans "Contact"  %}
+
+</div>
+
+
+<div class="infoBlock block1 mt-4">
+    {% load static %}
+    <img style="border:none; margin:0; "src="{% static 'eptSN/img/mail.svg'%}" alt="" class="img-thumbnail"> <span class="info"> {% trans "Mail: ept@ept.sn Postale : BP A10, Thiès, Sénégal" %}</span> <br>
+    <img style="border:none; margin:0; "src="{% static 'eptSN/img/call.svg'%}" alt="" class="img-thumbnail"></i><span class="info" >{% trans "Téléphone: 00221 33 951 15 48" %}</span>
+    <br>
+    
+    <img style="border:none; margin:0; "src="{% static 'eptSN/img/telephone1.svg'%}" alt="" class="img-thumbnail"> <span class="info">{% trans "Fax: 00221 33 951 14 76" %}</span>
+    <br>
+    <br>
+
+</div>
+
+<div class="lisiere col-12">
+
+  {% trans "Accès" %}  
+
+</div>
+
+<div class="infoBlock block2 mt-2 mb-0 pb-0">
+    <p class="text info mb-0 pb-0">
+        
+     {% trans "L'EPT est situé dans la région de Thiès (environ 70 km de Dakar, Sénégal), sur un terrain de plus de 400 hectares. Son campus comporte des locaux d'enseignement pédagogique et de recherche," %}  
+      {% trans "d'administration, d'exploitation et d'hébergement à l'usage des étudiants et d'une partie du personnel." %}
+ 
+</p>
+</div>
+
+<div class="lisiere col-12 mt-0">
+{% trans "Localisation"%}
+   
+
+</div>
+<div class="infoBlock block3 mt-2 mb-1 pb-0">
+<p class="text info mb-0 pb-0">
+ {% trans "Itinéraire depuis l'aéroport Léopold Sédar Senghor"%} 
+   </p>
+
+</div>
+
+<div class="row mb-5">
+    <div class=" col-6  mapBlock mt-2 mb-1 pb-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.6095290946905!2d-16.938049085389224!3d14.791010376347925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec1be4e9cad100d%3A0x2e6a43d5321f3f97!2sEcole%20Polytechnique%20de%20Thi%C3%A8s!5e0!3m2!1sfr!2ssn!4v1626823101496!5m2!1sfr!2ssn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div  class="col-5 formulaireBlock mt-2 mb-1 pb-0">
+            <p style="position: relative; top:100%;"  class=" mb-0 pb-0"></p>
+              {% trans " Trouver directement l'itinéraire de puis votre adresse jusqu'à l'école polytechnique de Thiès"%} 
+                 </p>
+                 <br>
+                    <!--LE TRAITEMENT SERA FAIT ICI PAR AJAX -->
+                 <form class="form"  method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label  for="{{ form.name.id_for_label }}" class="control-label mb-1">{% trans "Adresse" %}</label>
+                      {{ form.adresse }}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="{{ form.email.id_for_label }}" class="control-label mb-1">{% trans "BP" %}</label> <br>
+                      {{ form.bp }}
+                    </div>
+                    <br>
+                
+                    <button id="submit" style="background-color: #e19132; color:#fff; margin-left:40%;" type="submit" class="btn ">{% trans "Rechercher" %}</button>
+                  </form>
+                  <br>
+                  <div id="Ajaxresult">
+                    <!--zone qui va contenir les résultat du fetching via l'API -->
+                    </div>
+
+            </div>
+</div>
+

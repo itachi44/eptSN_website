@@ -1,0 +1,476 @@
+
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+}
+
+body{
+    display:flex; 
+    flex-direction:column; 
+}
+.block1{
+    margin-left: 15%;
+}
+
+.navbar .nav-item:hover .dropdown-menu{ display: block; }
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.navbar-nav li{
+    margin-left: 2%;
+
+}
+
+.navbar-nav{
+    width: 100%;
+}
+
+.translation{
+  border-color: lightgray;
+  border-style: solid;
+  border-width: 0 2px 0 2px;
+}
+
+.LogIn{
+    border: 2px solid #e19132;
+    background-color: #e19132;
+    color: #fff;
+    border-radius: 12px;
+    margin-left: 10%;
+
+}
+
+.SignIn{
+    border: 2px solid #e19132;
+    color: #e19132;
+    border-radius: 12px;
+    margin-left: 8%;
+}
+
+.frFlag,.enFlag{
+    position: relative;
+    right: 80%;
+}
+
+.frText:hover,.enText:hover{
+    cursor:pointer;
+}
+
+.frFlag,.enFlag, .frText,.enText{
+text-decoration: none;
+color: #000;
+}
+.frFlag::after{
+    content: 'FR ';
+    visibility: hidden;
+
+}
+
+.enFlag::after{
+    content: 'EN ';
+    visibility: hidden;
+}
+
+
+.headerItem{
+    transition: all 0.3s ease-out;
+}
+
+.headerItem:hover{
+    transform: scale(1.2);
+    border-bottom: 2px solid #e19132;
+    color: #e19132;
+    overflow: hidden;
+    background: linear-gradient(to right, #9D1989, midnightblue 50%, #e19132 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+.headerItem:active{
+    transform: scale(0.9);
+}
+
+.LogIn{
+    transition: all 0.3s ease-out;
+
+}
+.SignIn{
+    transition: all 0.3s ease-out;
+
+}
+
+.LogIn:hover{
+    transform: scale(1.1);
+
+}
+.SignIn:hover{
+    transform: scale(1.1);
+}
+
+
+.SignIn:active,.LogIn:active{
+    transform: scale(0.9);
+    outline: none;
+    box-shadow: none;
+}
+
+.SignIn:focus,.LogIn:focus {
+    outline: none;
+    box-shadow: none;
+
+  }
+
+
+
+/*carousel*/
+
+#carouselExampleIndicators{
+    width: 100%;
+    margin: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 10px; /* change width */
+    height: 10px; /* change height */
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-clip: padding-box;
+    border-radius: 100%; 
+}
+
+
+/* for the.translation */
+.translation {
+    display:inline-block;
+    position:relative;
+    border-bottom:1px dotted #666;
+    text-align:left;
+}
+
+
+.translation .bottom {
+    min-width:50px; 
+    top:40px;
+    left:50%;
+    transform:translate(-50%, 0);
+    padding:10px 20px;
+    color:#444444;
+    background-color:#fff;
+    font-weight:normal;
+    font-size:13px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    border:1px solid #333366;box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    display:none;
+}
+
+
+.translation:hover .bottom {
+    display:block;
+
+}
+
+
+.translation .bottom i {
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    margin-left:-12px;
+    width:24px;
+    height:12px;
+    overflow:hidden;
+}
+
+.translation .bottom i::after {
+    content:'';
+    position:absolute;
+    width:12px;
+    height:12px;
+    left:50%;
+    transform:translate(-50%,50%) rotate(45deg);
+    background-color:#fff;
+    border:1px solid #333366;box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+
+
+.contactInfo{
+    margin-left: 7%;
+    color: #fff;
+    text-decoration: none;
+}
+
+.deptItem:active{
+    background-color: #e19132;
+    color: #e19132;
+
+}
+.deptItem:hover{
+    background-color: #e19132;
+    text-decoration: underline;
+
+}
+/*social icons */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+.wrapper {
+  display: inline-flex;
+}
+
+.wrapper .icon {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .mytooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .mytooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background-color: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .mytooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .mytooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .mytooltip,
+.wrapper .facebook:hover .mytooltip::before {
+  background-color: #3b5999;
+  color: #ffffff;
+}
+
+.facebook, .instagram,.twitter, .youtube{
+    transform: scale(0.8);
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .mytooltip,
+.wrapper .twitter:hover .mytooltip::before {
+  background-color: #46c1f6;
+  color: #ffffff;
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .mytooltip,
+.wrapper .instagram:hover .mytooltip::before {
+  background-color: #e1306c;
+  color: #ffffff;
+}
+
+.fa-instagram, .fa-facebook-f,.fa-twitter, .fa-youtube{
+    color:#e19132;
+}
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .mytooltip,
+.wrapper .youtube:hover .mytooltip::before {
+  background-color: #de463b;
+  color: #ffffff;
+}
+
+.textOverlay{
+    position: absolute;
+    z-index:9999; 
+    left:5%; 
+    top:30%;
+    width:40%;
+    color:#fff;
+    
+}
+
+.footerItem {
+    position: relative;
+    display: inline-block;
+    font-size: 1.1em;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(to right, #9D1989, midnightblue 50%, #fff 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 0.2s ease;
+  }
+  .footerItem:hover {
+    background-position: 0 100%;
+    transform: scale(1.1);
+  }
+
+  /*page contact*/
+
+
+  .lisiere{
+      display: flex;
+      align-items: center;
+      background-color: #e19132;
+      text-align: left;
+      height: 3em;
+      color: #fff;
+      font-size: 1.1em;
+      margin-left: 1%;
+      margin-right: 1%;
+      width:98%;
+      border-radius:5px;
+      margin-top: 0;
+  }
+
+
+  .infoBlock{
+    text-align: left;
+    height: 6em;
+    color: #fff;
+    font-size: 1.1em;
+    margin-left: 1%;
+    margin-right: 1%;
+    width:98%;
+    border-radius:5px;
+
+  }
+  .block2{
+    height: 4em;
+  }
+
+  .block3{
+    height: 2em;
+  }
+  .info{
+      color: #000;
+  }
+
+
+  /* Map*/
+
+  .mapBlock {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-left: 2%;
+  }
+  .formulaireBlock{
+    margin-left: 2%;
+
+  }
+
+#id_adresse,#id_bp{
+      width: 80%;
+  }
+
+#id_prenom, #id_nom, #id_email, #id_classe, #id_departement{
+    margin-bottom: 2%;
+}
+#id_prenom, #id_nom, #id_email{
+    width: 65%;
+}
+
+#id_lieuNaissance{
+    margin-top:2%;
+    width: 90%;
+}
+
+.inline-select {
+    width: auto;
+    display: inline-block;
+    margin-left: 1%;
+}
+
+
+#id_captcha{
+    margin-top: 3%;
+}
+
+#id_password, #id_login{
+    width: 70%;
+    margin-left: 15%;
+}
+#id_password{
+    margin-top: 2%;
+}
+#id_remindMe{
+    margin-left: 15%;
+}
+
+
+  /*modal*/
+
+  body.modal-open .textOverlay{
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+  /*media queries */
+
+  /*diminuer la police pour les propriétés avec l'unité em s'adaptent*/

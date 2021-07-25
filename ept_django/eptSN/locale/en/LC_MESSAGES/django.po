@@ -1,0 +1,337 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-22 15:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+#: templates/eptSN/index.html:11
+msgid "L'Ecole Polytechnique de Thiès, connu sous le sigle EPT, est une"
+msgstr "The Polytechnic Thies school, known by the acronym EPT, is a"
+
+#: templates/eptSN/index.html:12
+msgid "grande école d'ingénieurs implantée au Sénégal. créée en 1973"
+msgstr "large engineering school located in Senegal. created in 1973"
+
+#: templates/eptSN/index.html:13
+msgid "par Léopold Sédar Senghor, elle forme des ingénieurs dans les"
+msgstr "by Léopold Sédar Senghor, it trains engineers in"
+
+#: templates/eptSN/index.html:14
+msgid "domaines du civil, du génie électromécanique (avec une "
+msgstr "fields of civil, electromechanical engineering (with a"
+
+#: templates/eptSN/index.html:15
+msgid "filière aéronautique) et du génie informatique et"
+msgstr "aeronautics) and computer engineering and"
+
+#: templates/eptSN/index.html:15
+msgid "télécommunications."
+msgstr "telecommunications."
+
+#: templates/eptSN/index.html:9
+msgid "Sagesse - Devoir"
+msgstr "Wisdom - Duty"
+
+#: templates/eptSN/contacts.html:41
+msgid ""
+"L'EPT est situé dans la région de Thiès (environ 70 km de Dakar, Sénégal), "
+"sur un terrain de plus de 400 hectares. Son campus comporte des locaux "
+"d'enseignement pédagogique et de recherche,"
+msgstr ""
+"EPT is located in the region of Thiès (about 70 km from Dakar, Senegal),"
+"on a plot of more than 400 hectares. Its campus has premises"
+"educational teaching and research,"
+
+#: templates/eptSN/contacts.html:42
+msgid ""
+"d'administration, d'exploitation et d'hébergement à l'usage des étudiants et "
+"d'une partie du personnel."
+msgstr ""
+"administration, operation and accommodation for the use of students and"
+"from part of the staff."
+
+
+
+
+
+
+
+
+
+#: forms.py:10
+msgid "Génie informatique"
+msgstr "Computer Engineering"
+
+#: forms.py:11
+msgid "Génie électromécanique"
+msgstr "Electromechanical engineering"
+
+#: forms.py:12
+msgid "Génie civil"
+msgstr "Civil engineering"
+
+#: forms.py:13
+msgid "Génie aéronautique"
+msgstr "Aeronautical engineering"
+
+#: forms.py:29 templates/eptSN/header.html:128
+msgid "Prénom et Nom"
+msgstr "First and last name"
+
+#: forms.py:31
+msgid "Nom"
+msgstr "Last name"
+
+#: forms.py:37
+msgid "Prénom"
+msgstr "First name"
+
+#: forms.py:43 templates/eptSN/header.html:135
+msgid "Adresse Mail"
+msgstr "Mail address"
+
+#: forms.py:44
+msgid "etudiant@ept.sn"
+msgstr "etudiant@ept.sn"
+
+#: forms.py:49 templates/eptSN/header.html:142
+msgid "Département"
+msgstr "Department"
+
+#: forms.py:57
+msgid "Classe-Niveau"
+msgstr "Class-Level"
+
+#: forms.py:70
+msgid "Date et lieu de naissance"
+msgstr "date and place of birth"
+
+#: forms.py:78
+msgid "lieuNaissance"
+msgstr "Birth Place"
+
+#: forms.py:80
+msgid "Lieu de Naissance"
+msgstr "Birth Place"
+
+#: forms.py:88
+msgid "Entrer le code"
+msgstr "Enter code"
+
+#: forms.py:98
+msgid "adresse email"
+msgstr "E-mail adress"
+
+#: forms.py:104
+msgid "Mot de passe"
+msgstr "Password"
+
+#: forms.py:120
+msgid "Ville / Région"
+msgstr "City / Region"
+
+#: forms.py:125
+msgid "Boite Postale"
+msgstr "Post box"
+
+#: forms.py:140
+#, python-format
+msgid "<div class=\"errorlist\">%s</div>"
+msgstr ""
+
+#: templates/eptSN/contacts.html:15
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/eptSN/contacts.html:22
+msgid "Mail: ept@ept.sn Postale : BP A10, Thiès, Sénégal"
+msgstr "Mail: ept@ept.sn Postal: BP A10, Thiès, Senegal"
+
+#: templates/eptSN/contacts.html:23 templates/eptSN/footer.html:23
+msgid "Téléphone: 00221 33 951 15 48"
+msgstr "Phone: 00221 33 951 15 48"
+
+#: templates/eptSN/contacts.html:26
+msgid "Fax: 00221 33 951 14 76"
+msgstr "Fax: 00221 33 951 14 76"
+
+#: templates/eptSN/contacts.html:34
+msgid "Accès"
+msgstr "Access"
+
+#: templates/eptSN/contacts.html:40
+msgid ""
+"\n"
+"        L'EPT est situé dans la région de Thiès (environ 70 km de Dakar, "
+"Sénégal), sur un terrain de plus de 400 hectares. Son campus comprte des "
+"locaux d'enseignement pédagogique et de recherche,\n"
+"        d'administration, d'exploitation et d'hébergement à l'usage des "
+"étudiants et d'une partie du personnel. \n"
+""
+msgstr 
+"\n"
+"EPT is located in the region of Thiès (about 70 km from Dakar,"
+"Senegal), on a plot of over 400 hectares. Its campus includes"
+"premises for educational teaching and research, \n"
+"administration, operation and hosting for the use of"
+"students and some of the staff. \n"
+
+
+#: templates/eptSN/contacts.html:49
+msgid "Localisation"
+msgstr "Location"
+
+#: templates/eptSN/contacts.html:55
+msgid "Itinéraire depuis l'aéroport Léopold Sédar Senghor"
+msgstr "Directions from Léopold Sédar Senghor airport"
+
+#: templates/eptSN/contacts.html:67
+msgid ""
+" Trouver directement l'itinéraire de puis votre adresse jusqu'à l'école "
+"polytechnique de Thiès"
+msgstr 
+"Directly find the route from then your address to the school"
+"Polytechnic of Thiès"
+
+#: templates/eptSN/contacts.html:74
+msgid "Adresse"
+msgstr "Adress"
+
+#: templates/eptSN/contacts.html:79
+msgid "BP"
+msgstr "BP"
+
+#: templates/eptSN/contacts.html:84
+msgid "Rechercher"
+msgstr "Search"
+
+#: templates/eptSN/footer.html:20 templates/eptSN/header.html:37
+msgid "Contacts"
+msgstr "Contacts"
+
+#: templates/eptSN/footer.html:21
+msgid "Mail: ept@ept.sn"
+msgstr "Mail: ept@ept.sn"
+
+#: templates/eptSN/footer.html:22
+msgid "Postale: BP A10, Thiès, Sénégal"
+msgstr "Postal: BP A10, Thiès, Senegal"
+
+#: templates/eptSN/footer.html:24
+msgid "Fax : 00221 33 951 14 76"
+msgstr "Fax: 00221 33 951 14 76"
+
+#: templates/eptSN/footer.html:29
+msgid "Sociale"
+msgstr "Social"
+
+#: templates/eptSN/footer.html:34
+msgid "Instagram"
+msgstr "Instagram"
+
+#: templates/eptSN/footer.html:38
+msgid "Facebook"
+msgstr "Facebook"
+
+#: templates/eptSN/footer.html:42
+msgid "Twitter"
+msgstr "Twitter"
+
+#: templates/eptSN/footer.html:47
+msgid "Youtube"
+msgstr "Youtube"
+
+#: templates/eptSN/header.html:16
+msgid "Accueil"
+msgstr "Home"
+
+#: templates/eptSN/header.html:21
+msgid "Départements"
+msgstr "Departments"
+
+#: templates/eptSN/header.html:34
+msgid "Administration"
+msgstr "Administration"
+
+#: templates/eptSN/header.html:40
+msgid "A propos"
+msgstr "About"
+
+#: templates/eptSN/header.html:58 templates/eptSN/header.html:65
+msgid "Connexion"
+msgstr "Login"
+
+#: templates/eptSN/header.html:81
+msgid "Se souvenir de moi"
+msgstr "Remember me"
+
+#: templates/eptSN/header.html:85
+msgid "Se connecter"
+msgstr "LogIn"
+
+#: templates/eptSN/header.html:86
+msgid "Mot de passe oublié ?"
+msgstr "Forgot your password ?"
+
+#: templates/eptSN/header.html:111
+msgid "Inscription"
+msgstr "Registration"
+
+#: templates/eptSN/header.html:117
+msgid "Créer un compte utilisateur"
+msgstr "Create a user account"
+
+#: templates/eptSN/header.html:148
+msgid "Classe - Niveau"
+msgstr "Class - Level"
+
+#: templates/eptSN/header.html:160
+msgid "Date et Lieu de Naissance"
+msgstr "Date and place of birth"
+
+#: templates/eptSN/header.html:169
+msgid "Captcha"
+msgstr "Captcha"
+
+#: templates/eptSN/header.html:191
+msgid "J'ai lu et j'accepte la politique de confidentialité et les"
+msgstr "I have read and accept the privacy policy and"
+
+#: templates/eptSN/header.html:191
+msgid "conditions générales d'utilisation"
+msgstr "Terms of Service"
+
+#: templates/eptSN/header.html:196
+msgid "Valider"
+msgstr "Validate"
+
+#: views.py:20
+msgid "accueil"
+msgstr "Home"
+
+#: views.py:63
+msgid "Une erreur interne est apparue. Merci de recommencer votre requête."
+msgstr "An internal error has occurred. Please start your request again."
+
+#: views.py:83
+msgid "contacts"
+msgstr "contacts"
+
+#: views.py:103
+msgid "implementation en cours !!! revenez plus tard"
+msgstr "implementation in progress !!! come back later"

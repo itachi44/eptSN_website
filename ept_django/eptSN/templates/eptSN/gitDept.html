@@ -1,0 +1,59 @@
+{% extends 'eptSN/base.html' %}
+{% load i18n %}
+{% block content %}
+{% if request.session.username  %}
+
+
+
+<style>
+  #logIn, #SignIn{
+    display: none;
+  }
+  .LogOut{
+    display: block;
+  }
+  .LogOut:focus{
+    outline: none;
+    box-shadow: none;
+  }
+  .LogOut:active{
+    transform: scale(0.9);
+    outline: none;
+    box-shadow: none;
+}
+.LogOut:hover{
+  transform: scale(1.1);
+}
+.LogOut{
+  transition: all 0.3s ease-out;
+
+}
+.LogOut{
+  border: 2px solid #e19132;
+  color: #e19132;
+  border-radius: 12px;
+  margin-left: 8%;
+}
+</style>
+
+<hr>
+<div style="display: flex; align-items:center; justify-content:center;" class="row mt-5">
+<ul class="list-group col-5">
+<li style="background-color: #e19132; border:none;" class="list-group-item active" aria-current="true">{% trans "Etudiants en département Génie Informatique"%}</li>
+
+{% for etudiant in etudiants %}
+<li class="list-group-item">{{ etudiant.0.nom }} {{ etudiant.0.prenom }}    |   {{ etudiant.1.nom_classe }}  </li>
+
+{% endfor %}
+</ul>
+
+</div>
+
+
+
+{% endif %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,62 @@
+{% load i18n %}
+    <footer  style="background-color: #e19132; width:100%; margin-top:auto; " class="pb-0 pt-1">	
+
+		<div class="container-fluid text-center text-md-left mb-0 pb-0">
+
+			<div  class="row text-center text-md-left ">
+
+				<div  class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-2 mb-0 pb-0">
+                    <a  class="navbar-brand " href="#">
+                        {% load static %}
+                        <img src="{% static 'eptSN/img/ept_logo.svg' %}" alt="" width="50%" height="40%">
+                      </a>
+
+                      <p style="text-align:left; color:#fff;" class="text mt-3">Copyright 2021 &copy; | Ecole Polytechnique de Thies</p>
+
+					
+                </div>
+
+				<div style="border-left: 2px solid #fff; text-align:left;" class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-2">
+					<h5 style="color:#fff; text-align:left; margin-left:7%;" class=" mb-2 font-weight-bold ">{% trans "Contacts" %}</h5>
+                        <a href="#" class=" footerItem text contactInfo" style="text-decoration: none;">{% trans "Mail: ept@ept.sn" %}</a> <br>
+                        <a href="#" class=" footerItem text contactInfo" style="text-decoration: none;">{% trans "Postale: BP A10, Thiès, Sénégal" %}</a> <br>
+                        <a href="#" class=" footerItem text contactInfo" style="text-decoration: none;">{% trans "Téléphone: 00221 33 951 15 48"%}</a> <br>
+                        <a href="#" class=" footerItem text contactInfo" style="text-decoration: none;">{% trans "Fax : 00221 33 951 14 76" %}</a><br>
+
+				</div>
+
+				<div style="border-left: 2px solid #fff; text-align:left;" class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-2">
+                    <h5 style="color:#fff; text-align:left; margin-left:7%;" class=" mb-4 font-weight-bold">{% trans "Sociale" %}</h5>
+                    
+
+                    <div class="wrapper">
+                        <div class="icon instagram">
+                            <div class="mytooltip">{% trans "Instagram" %}</div>
+                            <span><i class="fab fa-instagram fa-lg"></i></span>
+                          </div>
+                        <div class="icon facebook">
+                          <div class="mytooltip">{% trans "Facebook" %}</div>
+                          <span><i class="fab fa-facebook-f fa-lg"></i></span>
+                        </div>
+                        <div class="icon twitter">
+                          <div class="mytooltip">{% trans "Twitter" %}</div>
+                          <span><i class="fab fa-twitter fa-lg"></i></span>
+                        </div>
+      
+                        <div class="icon youtube">
+                          <div class="mytooltip">{% trans "Youtube" %}</div>
+                          <span><i class="fab fa-youtube fa-lg"></i></span>
+                        </div>
+                      </div>
+
+				</div>
+
+		
+				
+			</div>
+
+		
+			</div>
+
+		</div>
+</footer>

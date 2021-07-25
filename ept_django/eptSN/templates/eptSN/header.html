@@ -1,0 +1,237 @@
+{% load i18n %}
+<nav style="background-color: #fff;" class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        {% load static %}
+        <img src="{% static 'eptSN/img/ept_logo.svg' %}" alt="" width="90%" height="20%">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class=" block1 collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="headerItem accueil nav-link active" aria-current="page" href="/">{% trans "Accueil" %}</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class=" headerItem dept nav-link dropdown-toggle" style="color: black;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             {% trans "Départements" %} 
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul  style="background-color:#e19132; list-style-type:none; padding:0; margin:0;"class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for dept in departements %}
+
+              {% get_current_language as LANGUAGE_CODE %}
+
+              <li class="deptItem"><a style="color:#fff;" class="deptItem dropdown-item" href="{% url 'eptSN:goToDept' dept.nom_dept %}">{% if LANGUAGE_CODE == 'en' %}{% trans dept.nom_dept_en %} {% elif LANGUAGE_CODE == 'fr' %}  {% trans dept.nom_dept %}   {% endif %}       </a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="headerItem admin nav-link active" aria-current="page" href="#">{% trans "Administration" %}</a>
+          </li>
+          <li class="nav-item">
+            <a id="contact" class="headerItem contact nav-link active" aria-current="page" href="{% url 'eptSN:contacts' %}">{% trans "Contacts" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="headerItem about nav-link active" aria-current="page" href="#">{% trans "A propos" %}</a>
+          </li>
+          <li>
+            <div class=" translation nav-link active" > 
+                 <i class="fas fa-globe"  ></i>
+                 <i class="fa fa-angle-down"></i>
+                    <div  class="bottom">
+                        <span  class="frFlag flag-icon-background flag-icon-fr"></span> <a id="fr_translate" href="{% url 'eptSN:switch_lang' 'fr' view %} " class="frText "style="position: absolute; right:20%;"> <pre> FR</pre></a> <br>
+                        <span  class="enFlag flag-icon-background flag-icon-us"></span> <a id="en_translate" href="{% url 'eptSN:switch_lang' 'en' view %}"  class="enText" style="position: absolute;right:20%;"> <pre> EN</pre></a>
+                        <i></i>
+                    </div>
+
+                </div>
+
+                
+
+          </li>
+          <li>
+            <!--Bouton connexion-->
+            <button type="button" id="logIn"  class="LogIn btn" data-bs-toggle="modal" data-bs-target="#modalConnexion">{% trans "Connexion"%}</button>
+
+          <!-- Modal connexion-->
+          <div  class="modal fade" id="modalConnexion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div style=" z-index:999999999;  -webkit-transform: translate(0,-50%); -o-transform: translate(0,-50%); transform: translate(0,-50%);top: 40%; margin: 0 auto;" class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">{% trans "Connexion" %}</h5>
+                  <button id="closeModal1" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!--changer l'url après-->
+                  <form  class="form-inline " action="{% url 'eptSN:index'%}"  method="POST">
+                    {% csrf_token %}
+                    
+                  <div class="form-group ">
+                    {{ logInform.login }}
+                  </div>
+                  <div class="form-group">
+                    {{ logInform.password }}
+                  </div>
+                  <br>
+                  <div class="form-group ">
+                    {{ logInform.remindMe }}     <label for="{{ signInform.remindMe.id_for_label }}" class="control-label mb-1">{% trans "Se souvenir de moi" %}</label>
+                  </div>
+                  <br>
+
+                  <button id="submitLogIn" style="background-color: #e19132; margin-left:40%; color:#fff;" type="submit" class="btn ">{% trans "Se connecter" %}</button> <br> <br>
+                  <a style="margin-left:35%; " href="#">{% trans "Mot de passe oublié ?" %}</a>
+                  </form>
+               <!-- mettre l'attribut data-bs-dismiss="modal" dans le bouton valider pour le modal se ferme au clique-->
+               <!-- le faire avec js si toutes les verifications sont correctes-->
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </li>
+
+
+
+
+          <li>
+            <!--Bouton inscription-->
+            <button type="button" id="SignIn" class="SignIn btn" data-bs-toggle="modal" data-bs-target="#modalInscription">{% trans "Inscription" %}</button>
+            <a href="{% url 'eptSN:logOut'%}" role="button" id="LogOut" class="LogOut btn">{% trans "Deconnexion" %}</a>
+
+            <!-- Modal inscription-->
+          <div class="modal fade" id="modalInscription" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div id="modal-dialog " style="-webkit-transform: translate(0,-50%); -o-transform: translate(0,-50%); transform: translate(0,-50%);top: 40%; " class="modal-dialog modal-lg">
+              <div id="modal-content" class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">{% trans "Créer un compte utilisateur" %}</h5>
+                  <button id="closeModal2"  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                  
+                    <form id="registeringForm" autocomplete="off" class="form" action="{% url 'eptSN:index'%}"  method="POST">
+                      {% csrf_token %}
+                      <div class="row">
+                      <div class="part1 col-7">
+                        <!--on transmet la page sans que l'utilisateur s'en aperçoit-->
+                        <div style="display: none;" class="form-group">
+                          <input type="text" id="page" name="page" value={{view}} readonly/>
+                        </div>
+                      <div class="form-group ">
+                        <label for="{{ signInform.prenom.id_for_label }}" class="control-label mb-1">{% trans "Prénom et Nom" %}</label>
+                        {{ signInform.prenom }}
+                      </div>
+                      <div class="form-group">
+                        {{ signInform.nom }}
+                      </div>
+                      <div class="form-group ">
+                        <label for="{{ signInform.prenom.id_for_label }}" class="control-label mb-1">{% trans "Adresse Mail" %}</label>
+
+                        {{ signInform.email }}
+                      </div>
+                      <div class="subpart1 row">
+                        <div class="col-8">
+                      <div class="form-group ">
+                        <label for="{{ signInform.departement.id_for_label }}" class="control-label mb-1">{% trans "Département" %}</label>
+                        {{ signInform.departement }}
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="{{ signInform.classe.id_for_label }}" class="control-label mb-1">{% trans "Classe - Niveau"%}</label>
+
+                        {{ signInform.classe }}
+                      </div>
+                    </div>
+                    </div>
+                      <!--password -->
+                      <div class="row">
+                      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;"  class="form-group col-8">
+                        <label for="{{ signInform.signInPassword.id_for_label }}" class="control-label mb-1">{% trans "Mot de passe"%}</label>
+
+                        {{ signInform.signInPassword }}
+                      </div>
+                    </div>
+                    <br>
+
+                    </div>
+
+
+                    <div class="part2 col-5">
+                      <div class="form-group">
+                        <label for="{{ signInform.dateNaissance.id_for_label }}" class="control-label mb-1">{% trans "Date et Lieu de Naissance" %}</label> <br>
+                        {{ signInform.dateNaissance}}
+                      </div>
+
+                      <div class="form-group">
+                        {{ signInform.lieuNaissance}}
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <label for="{{ signInform.captcha.id_for_label }}" class="control-label mb-1">{% trans "Captcha" %}</label> <br>
+
+                        <div class="row ">
+                          <div style=" width:70%; margin-bottom:6%;" class=" col-10 mx-0">
+                            {{ signInform.captcha}}
+                          </div>
+                          <div style="margin-bottom: 2%;" id="reload" class="reload col-2">
+                            <button style="background-color:#e19132; color:#fff;" id="reloadCaptcha" type="button" class="btn" onclick="captcha()"><i class="fas fa-sync"></i></button>
+                          </div>
+   
+
+                        </div style=" width:70%;">
+                        {{ signInform.captchaCode}}
+                      </div>
+
+                       <!--password confirmation-->
+                       <div style="margin-top:2%;" class="row">
+                        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;" class="form-group">
+                          <label style="margin-bottom:2%;"  for="{{ signInform.passwordConfirm.id_for_label }}" class="control-label mb-1">{% trans "confirmer le mot de passe"%}</label>
+  
+                          {{ signInform.passwordConfirm }}
+                        </div>
+                      </div>
+
+                    </div>
+                    
+                    <div class="row">
+                      {% blocktranslate %}
+                      <p style="text-align: center;" id="formMessage"></p>
+
+                      {% endblocktranslate %}
+
+                    </div>
+
+
+                      <div class="form-group ">
+                        {{ signInform.policy }}
+                        <label for="{{ signInform.policy.id_for_label }}" class="control-label mb-1">{% trans "J'ai lu et j'accepte la politique de confidentialité et les" %} <a href="#">{% trans "conditions générales d'utilisation"%}</a></label>
+                      </div>
+
+
+                    </div>
+                    
+                  
+                      <button id="submitSignIn" style="background-color: #e19132; margin-left:40%; color:#fff;" type="submit" class="btn ">{% trans "Valider"%}</button>   
+                    </form>
+                    
+                    <!-- mettre l'attribut data-bs-dismiss="modal" dans le bouton valider pour le modal se ferme au clique-->
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
