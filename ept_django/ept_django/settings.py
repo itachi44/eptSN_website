@@ -20,7 +20,7 @@ if os.environ.get("ENV")=='PRODUCTION':
 else:
     DEBUG=True
 
-ALLOWED_HOSTS = ['127.0.0.1','eptSN.herokuapp.com','.eptSN.com']
+ALLOWED_HOSTS = ['127.0.0.1','eptSN.herokuapp.com','.eptSN.herokuapp.com']
 
 INTERNAL_IPS=[ '127.0.0.1'] #to change
 # Application definition
@@ -36,9 +36,11 @@ INSTALLED_APPS = [
 ]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware', 
     'django.middleware.common.CommonMiddleware',
@@ -152,8 +154,9 @@ STATICFILES_DIRS = (
 if os.environ.get('ENV') == 'PRODUCTION':
 
     # Simplified static file serving.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     # https://warehouse.python.org/project/whitenoise/
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 

@@ -9,10 +9,13 @@ from django.conf.urls.i18n import i18n_patterns
 from eptSN import views
 
 urlpatterns = [
-    url(r'^ept_admin/', admin.site.urls),
-    url(r'^', include(('eptSN.urls', 'eptSN'),namespace='eptSN')),
-    
+    url(r'^ept_admin/', admin.site.urls),    
 ]
+
+urlpatterns += i18n_patterns(
+    url(r'^', include(('eptSN.urls', 'eptSN'),namespace='eptSN')),
+    #prefix_default_language=False
+)
 
 
 

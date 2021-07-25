@@ -34,7 +34,12 @@ def index(request):
         logInform = LogInForm(request.POST)
         email = request.POST.get('login')
         password= request.POST.get('password')
-        rememberMe= request.POST.get('remindMe')
+        if not request.POST.get('remindMe', None):
+            request.session.set_expiry(0)
+        else:
+            request.session["rememberMe"]=True
+            request.session["username"]=email
+            request.session["password"]=password
 
         #on cherche dans la base si c'est le bon email et le bon mot de passe
         etudiant = Etudiant.objects.filter(email=email,password=password)

@@ -68,6 +68,7 @@
 
     <script>
 
+
       //le message flottant pour 3s
       $("#message").show().delay(3000).fadeOut();
 
@@ -86,7 +87,10 @@
                        let f = alpha[Math.floor(Math.random()*71)];
         
                        let final = a+b+c+d+e+f;
-                       document.getElementById("id_captcha").value=final;
+                       if (document.getElementById("id_captcha")!=null){
+                        document.getElementById("id_captcha").value=final;
+                       }
+                       
                      }
                      //on initialise un captcha
                      captcha();
@@ -272,18 +276,42 @@ pwd1.addEventListener("focus",function(e){
    });
 
 
+window.onbeforeunload = function(e) {
+  $.ajax({
+    type: 'GET',
+             url: "{% url 'eptSN:logOut' %}",
+             data: {"action": "logOut" },
+             success: function (response) {
+                console.log(response);
+                console.log("okk");
+             },
+             error: function (response) {
+                 console.log(response)
+                 console.log("okk");
+             }
+ })
+};
 
    //déconnecter l'utilisateur à la fermeture du navigateur
+  /* 
 window.addEventListener('beforeunload', function (e) {
+  return confirm("Do you really want to close?"); 
 
-  /*
   $.ajax({
-    url: logout_url,
-    method: 'GET',
+   type: 'GET',
+            url: "{% url 'eptSN:logOut' %}",
+            data: {"action": "logOut" },
+            success: function (response) {
+               console.log(response);
+               console.log("okk");
+            },
+            error: function (response) {
+                console.log(response)
+                console.log("okk");
+            }
 })
-*/
 });
-
+*/
 
 
 
