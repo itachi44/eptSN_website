@@ -15,9 +15,6 @@ from .models import Etudiant, Departement,Classe, Inscription
 
 
 
-
-
-
 # Create your views here.
 
 #page d'accueil
@@ -218,3 +215,6 @@ def goToDept(request, department="default"):
     else:
         messages.warning(request, _('désolé Vous devez être connecté pour accéder à cette page'))
         return redirect('eptSN:index')
+
+
+

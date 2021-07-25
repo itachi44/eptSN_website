@@ -1,20 +1,18 @@
 from django.conf import settings
 from django.conf.urls import include, url
+from django.urls import path
 from django.contrib import admin
 from django.utils.translation import gettext as _
 from django.conf.urls.i18n import i18n_patterns
 
 
-
-from eptSN import views
-
 urlpatterns = [
-    url(r'^ept_admin/', admin.site.urls),    
+    url(r'^ept_admin/', admin.site.urls), 
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^', include(('eptSN.urls', 'eptSN'),namespace='eptSN')),
-    #prefix_default_language=False
+    prefix_default_language=False
 )
 
 
