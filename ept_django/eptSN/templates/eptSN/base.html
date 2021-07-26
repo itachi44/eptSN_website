@@ -124,7 +124,8 @@
     let regexName = /^[a-zA-Zç .-]{0,}$/;
     let regexEmail=/^[a-zA-Z0-9.]{1,}@[ept]{3,3}\.[sn]{2,2}$/;
     //le mot de passe doit commencer par une lettre majuscule, comporter au moins 1 chiffre et au moins un caractère spécial
-    let regexPwd=/^^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]*)(?!.*\s).{8,15}$/;
+    let regexPwd=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
 
     //vérifie les champs nom, prenom et lieu de naissance
     function verifName(field) {

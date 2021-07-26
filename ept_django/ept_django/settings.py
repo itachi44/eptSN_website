@@ -32,10 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eptSN.apps.EptsnConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_filters'
+    #'django_filters',
+    'eptSN.apps.EptsnConfig'
 ]
 
 
@@ -43,13 +43,13 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'
     ],
 
-    #'DEFAULT_AUTHENTICATION_CLASSES': (
-    #           'rest_framework.authentication.TokenAuthentication',
-    #),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+               'rest_framework.authentication.TokenAuthentication',
+    ),
 }
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
+#SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -12,7 +12,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^', include(('eptSN.urls', 'eptSN'),namespace='eptSN')),
-    prefix_default_language=False
+    #prefix_default_language=False
 )
 
 
